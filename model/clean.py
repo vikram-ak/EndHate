@@ -1,5 +1,5 @@
 # Cleans and regularizes the data and outputs to 'train_clean.csv'
-
+# Removes the "profanity" label - changes it to hate or not hate
 
 import pandas as pd
 import re
