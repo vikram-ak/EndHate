@@ -4,7 +4,7 @@ EndHate is an API that uses machine learning to decide whether text is hate spee
 stochastic gradient descent classifier. The API is built on a Flask webserver.
 
 ## Files
-The model and the training data are contained in the [```/model```](https://github.com/vikram-ak/EndHate/tree/master/model) folder. This folder also includes the data and the scripts used to train the model. 
+The model and the training data are contained in the [```/model```](https://github.com/vikram-ak/EndHate/tree/master/model) folder. This folder also includes the data and the scripts used to train the model. The original data is in ```labeled_data.csv```. The cleaned training data is in ```train_clean.csv```. The test data is in ```test.csv```.
 
 ## **Warning, the data contains very explicit text. View at your own risk.**
 <br>
