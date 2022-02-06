@@ -11,20 +11,20 @@ import pickle
 
 # loading cleaned data
 
-train_clean = pd.read_csv('train_clean.csv')
+clean = pd.read_csv('train_clean.csv')
 
 # upscaling minority to account for imbalanced data
-train_majority = train_clean[train_clean.label==0]
-train_minority = train_clean[train_clean.label==1]
-train_minority_upsampled = resample(train_minority, 
+majority = clean[clean.label==0]
+minority = clean[clean.label==1]
+minority_upsampled = resample(minority, 
                                 replace=True,    
-                                n_samples=len(train_majority),   
+                                n_samples=len(majority),   
                                 random_state=123)
-train_upsampled = pd.concat([train_minority_upsampled, train_majority])
+train_upsampled = pd.concat([minority_upsampled, majority])
 print(train_upsampled['label'].value_counts())
 
 # creating training pipeline
-pipeline_sgd = Pipeline([
+pipeline = Pipeline([
     ('vect', CountVectorizer()),
     ('tfidf',  TfidfTransformer()),
     ('nb', SGDClassifier()),])
@@ -35,11 +35,11 @@ X_train, X_test, y_train, y_test = train_test_split(train_upsampled['tweet'],
 
 
 # training and saving the model
-model = pipeline_sgd.fit(X_train, y_train)
+model = pipeline.fit(X_train, y_train)
 pickle.dump(model, open('trained_model.sav', 'wb'))
 
 # testing model
-y_predict = model.predict(X_test)
+# y_predict = model.predict(X_test)
 # print(y_predict)
 # print(f1_score(y_test, y_predict))
 # print(accuracy_score(y_test, y_predict))
