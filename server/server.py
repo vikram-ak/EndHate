@@ -24,11 +24,8 @@ def isHate(text):
 	return str(out)
 
 
-# landing page endpoint
-@app.route('/', methods=['GET'])
 
-def home():
-	return render_template('home.html')
+
 
 # api endpoint for text input
 @app.route('/input/', methods=['POST'])
